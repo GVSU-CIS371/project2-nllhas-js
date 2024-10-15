@@ -10,15 +10,22 @@ function generateProductHTML(product: Product): string {
 }
 
 function renderProducts(prods: Product[]): void {
-    // your code
+    const items = prods.map(generateProductHTML).join("");
+    const container = document.getElementById("main-container");
+    if(container) {
+        container.innerHTML = items;
+    }
+
 }
 
 function getByCategory(category: string): void {
-    // your code
+    const categoryProducts = products.filter((product) => product.category === category);
+    renderProducts(categoryProducts);
 }
 
 function getByRating(minRating: number): void {
-    // your code
+    const ratedProducts = products.filter((product) => product.rating > minRating);
+    renderProducts(ratedProducts);
 }
 
 export { renderProducts, getByCategory, getByRating };
